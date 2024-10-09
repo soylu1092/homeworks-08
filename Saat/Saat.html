@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="saat.css">
+    <title>Clock</title>
+</head>
+<body>
+    <div id="clock">
+        <h2>JS Digital Clock</h2>
+        <!-- Clock -->
+        <div class="clock-container">
+            <div class="clock-items"><p id="hour">07</p></div>
+            <div class="clock-items"><p id="minute">34</p></div>
+            <div class="clock-items"><p id="second">06</p></div>
+         </div>
+         <p id="date"></p>
+    </div>
+    
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <script>
+
+function GetTime(){
+    var now = new Date(); 
+    var hour= now.getHours();
+    var minute=now.getMinutes();
+    var second= now.getSeconds();
+
+    var day=now.getDate();
+    var month=now.getMonth()+1; 
+    var year= now.getFullYear();
+
+   (hour<10) ? document.getElementById("hour").innerHTML="0"+hour : 
+               document.getElementById("hour").innerHTML=hour;
+
+   (minute<10) ? document.getElementById("minute").innerHTML="0"+minute :
+                 document.getElementById("minute").innerHTML=minute;
+   (second<10) ? document.getElementById("second").innerHTML="0"+second :
+                 document.getElementById("second").innerHTML=second;
+
+document.getElementById("date").innerHTML= day+" / "+month+" / "+year;
+}
+
+setInterval(function(){GetTime();},1000);
+    </script>
+</body>
+</html>

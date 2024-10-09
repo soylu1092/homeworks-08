@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogum Gunu Sayacı</title>
+    <link rel="stylesheet" href="dogumgunu.css">
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<div class="container">
+    <h1>Sayac geri sayım</h1>
+    <span id="sayac">Sayac</span>
+</div>
+
+<script>
+    let istenilenSure = 187260;
+    let toplamSaniye = istenilenSure * 60;
+    let sayacElement = document.querySelector('#sayac');
+    
+
+    let sayacBaslat = setInterval(() => {
+        if(toplamSaniye <=0 ){
+            clearInterval(sayacBaslat);
+            sayacElement.innerHTML="Sayacım Sonlandı:";
+        }else{
+            toplamSaniye--;
+            const gun = Math.floor(toplamSaniye / 3600 / 24);
+            const saat = Math.floor(toplamSaniye / 3600) % 24;
+            const dakika = Math.floor(toplamSaniye / 60) % 60;
+            const saniye = Math.floor(toplamSaniye % 60);
+            sayacElement.innerHTML = `Sure : ${format(gun)} gün / ${format(saat)} sa / ${format(dakika)} dk / ${format(saniye)} sn ;`
+
+        }
+    }, 1000);
+
+    function format(a) {
+        return a < 10 ? `0${a}` : a;
+    }
+
+
+    
+</script>
+
+
+
+
+
+
+</body>
+</html>
